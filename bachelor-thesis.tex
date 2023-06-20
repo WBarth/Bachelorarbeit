@@ -1,0 +1,84 @@
+% **************************************************
+% Document class
+% **************************************************
+
+\documentclass[
+	a4paper,
+	12pt,
+	bibtotoc,
+	listof=totoc,
+	titlepage
+]{scrartcl}
+
+
+% **************************************************
+% Settings
+% **************************************************
+
+\usepackage{settings}
+
+
+% **************************************************
+% Variables
+% **************************************************
+
+\newcommand*{\getUniversity}{Hochschule für angewandte Wissenschaften München}
+\newcommand*{\getFaculty}{Fakultät für Informatik und Mathematik}
+\newcommand*{\getTitle}{Implementierung eines Drahtlosen Fußschalters}
+\newcommand*{\getAuthor}{Wolfram Barth}
+\newcommand*{\getMatriculationNumber}{03708119}
+\newcommand*{\getCourse}{Informatik}
+\newcommand*{\getDoctype}{Bachelorarbeit}
+\newcommand*{\getSupervisor}{Prof. Dr. Stefan Wallentowitz}
+\newcommand*{\getSubmissionDate}{\today}
+
+
+% **************************************************
+% PDF Metadata
+% **************************************************
+
+\hypersetup{
+	pdftitle = \getTitle,
+	pdfauthor = \getAuthor,
+	pdfsubject = \getDoctype
+	pdfkeywords = {Bachelorarbeit, Informatik}
+}
+
+
+% **************************************************
+% Content
+% **************************************************
+
+\begin{document}
+
+\input{pages/title}
+
+\input{pages/abstract}
+
+\tableofcontents
+
+\clearpage
+\listoffigures
+
+\clearpage
+\listoftables
+
+\clearpage
+\lstlistoflistings
+
+\clearpage
+\input{pages/acronyms}
+
+\clearpage
+\input{chapters/01_introduction}
+
+\clearpage
+\input{chapters/99_conclusion}
+
+\clearpage
+\printbibliography
+
+\clearpage
+\input{pages/declaration}
+
+\end{document}
