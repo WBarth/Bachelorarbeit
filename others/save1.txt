@@ -35,3 +35,8 @@ Menschen, die mit ihrem IQ prahlen, sind Versager (\cite[S. 99]{hawking_1999}).
         }
     }
 \end{lstlisting}
+
+
+\begin{figure}[H] 
+  \includegraphics[width=0.17\textwidth]{logos/signature.png}
+\end{figure}
