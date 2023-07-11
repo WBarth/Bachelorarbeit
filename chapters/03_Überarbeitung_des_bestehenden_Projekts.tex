@@ -1,0 +1,45 @@
+\section{Überarbeitung der Dongle-App}
+Die Dongle App dient neben dem nrf\_Base Projekt als Basis für die Anwendung des Fußschalters. Sie diente als Proof-of-Concept und ermöglichte als solche die Bereitschaft des Projektmanagements die Ressourcen für die Implementierung des Fußschalters zu bewilligen. Im ersten Schritt der Implementierung wird sie um Grundfunktionalitäten erweitert und die Datenverarbeitung flexibler gestaltet.
+
+\subsection{Trennung der Projekte}
+Das Framework der Hoffmann Group zur Abstraktion der BLE-Schnittstelle nrf\_Base wird in allen HCT-fähigen Produkten eingesetzt und stetig weiterentwickelt. Um die fehlerfreie Kommunikation des Fußschalters zu den HCT-Werkzeugen auch in Zukunft sicherzustellen, müssen diese Updates auch in das Projekt des Fußschalters übernommen werden. Während in der Proof-of-Concept Anwendung des Dongles darauf noch keine Rücksicht genommen wurden, soll in der Entwicklung des Fußschalters von Anfang an diese Abhängigkeit berücksichtigt werden und die Dongle-App entsprechend angepasst werden. Des weiteren soll auch der Umfang der Anwendung, die auf dem Dongle läuft, minimiert werden und der Code für die Peripherie des Fußschalters abgetrennt werden. Natürlich darf in anderen Produkten als dem Dongle und dem Fußschalter, deren Code nicht zu finden sein.
+
+Folgende Peripherie darf dabei nur in den jeweiligen Projekten initialisiert werden:
+\begin{itemize}
+	\item nrf\_Base: UART
+	\item HCT-FootSwitch: Fußschalter, Akku Power Management, Drei-Farben LED, USB
+	\item Dongle: Ein-Farben LED, USB
+\end{itemize}
+
+Um diese Anforderungen zu erfüllen kann einerseits für alle drei Projekte eine eigene Codebasis geschaffen werden, die sich jeweils stark überschneiden und gesondert gepflegt werden müssen oder die selbe Codebasis für alle Projekte benutzt werden. Während die erste Möglichkeit den Vorteil hat, dass sich die Entwicklung einfacher gestaltet, da auf diese Abhängigkeiten keine Rücksicht genommen werden muss. Zudem kann der Code stärker auf den Anwendungsfall optimiert werden, jedoch macht der enorme Arbeitsaufwand die gesonderten Codebasen zu unterhalten und auf dem neuesten Stand zu halten, diese Möglichkeit unpraktikabel. Des weiteren wurde aus Softwarearchetektonischen Gründen die Software bereits gekapselt, wodurch die Programmatische Abtrennung der Teile keinen außerordentlichen Entwicklungsumfang erfordert.\\
+Stattdessen muss aus der Main-Routine nur zwei Funktionsaufrufe mit Compilerschaltern abgetrennt werden um den Code des Fußschalter bzw. Dongles vom nrf\_Base Projekt zu trennen. Zum einen der Initialisierungsaufruf und ein App-process Aufruf, da der Main-Loop als Dispatcher für die gesamter Anwendung fungiert. Im Central müssen die Datencallbacks, sowie im Connection State Callback die Aufrufe an die Dongle-App abgetrennt werden. Die Funktionalität der UART stellte sich als wenig gekapselt heraus und musste an zahlreiche Stellen kleinteilig aus dem Fußschalterprojekt entfernt werden.\\ 
+Das ambitioniertes Ziel war dabei, dass nach der Einführung der Compilerschalter das Binärfile des nrf\_Base Projekts identisch zu der vorangegangenen Version ohne Fußschalter sein sollte. Aus noch nicht geklärten Umständen ist das jedoch nicht der Fall.
+
+
+\subsection{Verbesserung Verbindungsaufbau}
+Im ersten Prototyp der Dongle-App wird, sobald die Konfigurationsdatei eingelesen wurde, überprüft ob die jeweiligen Geräte bereits verbunden sind. Falls ein Gerät unverbunden ist, wird das Scanning gestartet und periodisch die vom Central gefundenen Geräte auf das zu verbindende Gerät hin untersucht. Wird es schließlich gefunden, wird der Verbindungsaufbau angestoßen und sobald die Service discovery stattgefunden hat, wird sich auf die HCT-Charakteristik subscribed und das Connection Handle des Geräts aus dem Central Device übernommen. \\
+Dabei werden jedoch zwei Zustände nicht abgebildet. Zum einen wird zwischen der Verbindungsaufnahme und der Subscription auf die HCT-Charakteristik, der Zustand ``Connected'' eingenommen. Hier wird bereits das Connection Handle zugeordnet und sollte gespeichert werden, da ab der Einnahme dieses Zustand ein disconnect auftreten kann und nur über das Connection Handle nachvollzogen werden. Zum anderen wird nach der erfolgreichen Subscription ein Acknowledgement übermittelt und im Central der Zustand ``Subscription'' eigenommen. Hier wurde in der Dongle-App bereits das Connection Handle dem Gerät zugeordnet, weswegen ein Disconnect nachvollzogen werden kann, jedoch wird die initiale Kommunikation mit der Abfrage der Messeinheit forgesetzt. Dabei wurde bisher nicht gewartet, dass die Subscription erfolgreich abgeschlossen wurde, was jedoch die Zuverlässigkeit des Verbindungsaufbaus erhöht.
+
+\begin{figure}[H] 
+	\centering
+	\includegraphics[width=\textwidth]{figures/Verbindungsaufbau.png}
+	\caption{Zustandsdiagramm des Verbindungsaufbaus}
+\end{figure}
+
+
+
+\subsection{Optimierung Abfrage Messeinheit} 
+Im derzeitigen Stand der USB-Dongle App muss die Anwendung bei Drehmomentschlüsseln und Messuhren der Marke Holex jedes Mal, wenn sie ein Messergebnis erhält, die Einheit der Messung abfragen. 
+
+Bei Drehmomentschlüsseln der Marke Garant wird ein Datenblock mit der Messeinheit kurz nach erhalten des Messergebnisses empfangen. Diese Nachricht bezieht sich jedoch auf die derzeitig eingestellte Messeinheit, welche im Fall eines Arbeitsablaufs mit sich ändernden Einheiten, die Einheit für die nächste Messung ist. In diesem Fall gibt die USB-Dongle App die falsche Einheit über USB-CDC aus. 
+
+In beiden Fällen sendet der Drehmomentschlüssel automatisch bei einer Änderung der Messkonfiguration einen Datenblock mit der Messeinheit an die Dongle App. 
+
+Die Kontrolle der Messeinheit kann daher verbessert werden, indem die derzeitig eingestellte Messeinheit nach dem Verbindungsaufbau einmal abgefragt wird und für jedes verbundene Gerät gespeichert wird. Bei einer Änderung der Messeinheit wird die Dongle App notifiziert und die gespeicherte Einheit aktualisiert. Dadurch wird eine fehlerhafte Einheit in der Ausgabe über USB-CDC vermieden und die Anzahl an Nachrichten der Dongle-App an das Messgerät verringert.
+
+\begin{figure}[H] 
+	\centering
+	\includegraphics[width=\textwidth]{figures/Messablauf.png}
+	\caption{Messablauf}
+\end{figure}
+
