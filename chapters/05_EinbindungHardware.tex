@@ -9,7 +9,7 @@ Es zeigte sich bei der Einbindung des Fußtasters, dass die Anwendung durch Bet�
 
 \subsection{Fußschalter Funktionalität}
 Nach Überarbeitung der Codebasis und Einbindung der Messuhren, stehen alle Funktionalitäten bereit um den eigentlichen Fußtaster einzubinden. Während bei der initialen Einbindung des Fußtasters, eine Betätigung das Abfragen der Messergebnisse bei allen verbundenen Messuhren triggerte, wuchs die Funktionalität stetig.\\
-Zum Ende dieser Arbeit wird durch ein kurzes Betätigen oder einem ``einfachen Klick'' die bereits beschriebene Gruppenfunktion ausgeführt. Im Modus 0 (USB-HID-singleKey) und 4 (BLE-HID-singleKey) wird draufhin ein Timer gestartet, welcher derzeit auf 500ms gesetzt ist. Wird während seines Laufen eine zweite Betätigung getätigt, wird ein ``Doppelklick'' registriert und das dafür in der Konfigurationsdatei hinterlegte Zeichen ausgegeben. Dadurch kann der User in diesem Modus schnell Dialogoptionen in der HCT-Windows-App auswählen oder in einem Textfile die Seiten wechseln. In einem anderen Modus führt das Warten auf die zweite Betätigung, jedoch zu einer Verzögerung der Ausgabe um die Dauer des Timers, weshalb dort die Doppelklick Funktionalität zugunsten dem Ansprechverhalten des Tasters gestrichen wurde.\\
+Zum Ende dieser Arbeit wird durch ein kurzes Betätigen oder einem ``einfachen Klick'' die bereits beschriebene Gruppenfunktion ausgeführt. Im Modus 0 (USB-\ac{HID}-singleKey) und 4 (\ac{BLE}-\ac{HID}-singleKey) wird draufhin ein Timer gestartet, welcher derzeit auf 500ms gesetzt ist. Wird während seines Laufen eine zweite Betätigung getätigt, wird ein ``Doppelklick'' registriert und das dafür in der Konfigurationsdatei hinterlegte Zeichen ausgegeben. Dadurch kann der User in diesem Modus schnell Dialogoptionen in der \ac{HCT}-Windows-App auswählen oder in einem Textfile die Seiten wechseln. In einem anderen Modus führt das Warten auf die zweite Betätigung, jedoch zu einer Verzögerung der Ausgabe um die Dauer des Timers, weshalb dort die Doppelklick Funktionalität zugunsten dem Ansprechverhalten des Tasters gestrichen wurde.\\
 Wird der Taster hingegen für 3 Sekunden durchgängig gehalten, wird das Gerät heruntergefahren. Diese Funktionalität wurde ursprünglich eingeführt, da der Fußschalter auf einer Messe vorgestellt wurde, aber der automatische Reset des Geräts bei Änderung der Konfigurationsfiles noch nicht zuverlässig funktionierte. Sie wurde beibehalten, da sie als sehr benutzerfreundlich empfunden wurde.
 
 \subsection{Inbetriebnahme LED}
@@ -30,7 +30,7 @@ Auf dem Board des Fußschalters befindet sich eine LED die durch einen Lichtkana
 		\hline
 		Kein Gerät verbunden, Scanning aktiv & Grün blinkend \\
 		\hline
-		MSC-Schreibvorgang detektiert & Gelb \\
+		\ac{MSC}-Schreibvorgang detektiert & Gelb \\
 		\hline
 		Min. ein Konfigurationsfile nicht gefunden & Rot \\
 		\hline
