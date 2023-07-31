@@ -1,0 +1,20 @@
+- Feedback
+
+- Seitenanzahl
+
+Rechearbeit
+- BLE?
+- wie Tief?
+- Welche Quellen?
+
+
+- Was ist mit Quellcode?
+- Kolloqiuom?
+
+
+----------------------------------------------------------------------
+
+- mehr Problemstellung & allgemeiner/generalisiern!
+- mehr Belegen/ mehr BLE /mehr HCT
+- spezielle Tests/ Verifikationen /startegie
+- Fazit
