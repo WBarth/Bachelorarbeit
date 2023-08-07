@@ -1,0 +1,24 @@
+
+_________TODO__________
+
+- Einleitung überarbeiten
+    -> mobile App
+    -> Grafik von HCT-Plattform
+- BLE Kapitel
+    -> HCT-Plattform und Protokoll reinziehen
+    -> Einleitung entsprechend anpassen
+- Erfindungsmeldung einbringen
+    -> Wo und Wie?
+- End Evaluierung
+    -> Code review
+    -> Testläufe bei Kunden und Messtechniker
+- reorder Messmodi
+- Hardware drawing in den Anhang
+
+
+- Belege einfügen
+    -> Recherche
+
+    -> 3.2 Verbindungsaufbau schritte belegen?
+    -> 3.3 Energie verbrauch rechnung
+- Evaluierung bei den einzelnen Kapiteln (tests)
