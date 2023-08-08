@@ -5,7 +5,6 @@ _________TODO__________
     -> mobile App
     -> Grafik von HCT-Plattform
 - BLE Kapitel
-    -> HCT-Plattform und Protokoll reinziehen
     -> Einleitung entsprechend anpassen
 - Erfindungsmeldung einbringen
     -> Wo und Wie?
