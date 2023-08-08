@@ -9,10 +9,10 @@ _________TODO__________
     -> Einleitung entsprechend anpassen
 - Erfindungsmeldung einbringen
     -> Wo und Wie?
+    -> Dokument in Anhang
 - End Evaluierung
     -> Code review
     -> Testläufe bei Kunden und Messtechniker
-- reorder Messmodi
 - Hardware drawing in den Anhang
 
 
