@@ -97,6 +97,25 @@
 \input{chapters/09_Abschluss}
 
 \clearpage
+\appendix
+%\section{Anhang}
+\includepdf[
+    clip=0mm 0mm 0mm 0mm,
+    pages={1},
+    frame,
+    scale=.85,
+    pagecommand=\section{Erfindungsmeldung}\label{subsec:Erfindungsmeldung}\label{appendix:Erfindungsmeldung}
+]{./anhang/EB_Erfindungsmeldung_Trigger_mit_Funkverbindung.pdf}
+\includepdf[
+    clip=0mm 0mm 0mm 0mm,
+    pages={2-},
+    frame,
+    scale=.85,
+    pagecommand={}
+]{./anhang/EB_Erfindungsmeldung_Trigger_mit_Funkverbindung.pdf}
+%\includepdf{anhang/EB Erfindungsmeldung Trigger mit Funkverbindung _signed.pdf}
+
+\clearpage
 \printbibliography
 
 \clearpage
