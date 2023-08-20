@@ -18,10 +18,7 @@ _________TODO__________
     -> 3.3 Energie verbrauch rechnung
 - Evaluierung bei den einzelnen Kapiteln (tests)
 
-
-
-Fragen Wallentowitz
-- abgabe
+- Kapitel 6 und 7 zusammenbringen
 
 
 ZOTERO
