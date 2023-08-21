@@ -40,3 +40,14 @@ feedback 16.08
 
 abschlussarbeiten@
 01.09 24 uhr
+
+
+Ergebnisse: (brainstorm)
+- Sniffs von Verbindungsaufbau?
+    -> Abfrage deviceId, einheit etc.
+- Logging vom reset 
+- Gruppenfunktion: 
+    -> Algorithmus: diagramm
+    -> Reihenfolge: cdc Ausgabe
+- ble-hid: sniff tastendrück  (zeit)
+- usb-hid: logg zeitmessung 
