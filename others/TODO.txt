@@ -48,6 +48,3 @@ Ergebnisse: (brainstorm)
 - Logging vom reset 
 - Gruppenfunktion: 
     -> Algorithmus: diagramm
-    -> Reihenfolge: cdc Ausgabe
-- ble-hid: sniff tastendrück  (zeit)
-- usb-hid: logg zeitmessung 
