@@ -45,6 +45,14 @@ abschlussarbeiten@
 Ergebnisse: (brainstorm)
 - Sniffs von Verbindungsaufbau?
     -> Abfrage deviceId, einheit etc.
-- Logging vom reset 
 - Gruppenfunktion: 
     -> Algorithmus: diagramm
+
+
+
+Logging vom reset?! neue Idee
+
+
+
+also die Statuspakete der einzelnen Verbindung gehäuft um einen Zeitpunkt auftreten. Besser wäre es die Pakete auf die gesamte Zeispanne des Connection Intervals gleichmäßig zu verteilen. Dadurch kann es dazu kommen, dass das Softdevice die Anwendung des Fußschalters für eine bemerkbare Zeit blockiert, da es eine höhere Priorität besitzt. Die Optimierung der Connection Intervalle ist jedoch Aufgabe des unterliegenden Frameworks nrf\_Base.
+%TODO Bild
