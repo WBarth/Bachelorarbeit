@@ -92,7 +92,7 @@
 
 \clearpage
 \appendix
-%\section{Anhang}
+
 \includepdf[
     clip=0mm 0mm 0mm 0mm,
     pages={1},
@@ -107,7 +107,29 @@
     scale=.85,
     pagecommand={}
 ]{./anhang/EB_Erfindungsmeldung_Trigger_mit_Funkverbindung.pdf}
-%\includepdf{anhang/EB Erfindungsmeldung Trigger mit Funkverbindung _signed.pdf}
+
+\includepdf[
+    clip=0mm 0mm 0mm 0mm,
+    pages={1},
+    frame,
+    scale=.85,
+    pagecommand=\section{Hardwarezeichnung}\label{subsec:Hardwarezeichnung}\label{appendix:Hardwarezeichnung}
+]{./anhang/L20363_BT_Fusstaster_V0-5_sch.pdf}
+
+\includepdf[
+    clip=0mm 0mm 0mm 0mm,
+    pages={1},
+    frame,
+    scale=.85,
+    pagecommand=\section{HCT-Protocol-Description}\label{subsec:HCT-Protocol-Description}\label{appendix:HCT-Protocol-Description}
+]{./anhang/HCT-Protocol-Description-V1.0.2.pdf}
+\includepdf[
+    clip=0mm 0mm 0mm 0mm,
+    pages={2-},
+    frame,
+    scale=.85,
+    pagecommand={}
+]{./anhang/HCT-Protocol-Description-V1.0.2.pdf}
 
 \clearpage
 \printbibliography
