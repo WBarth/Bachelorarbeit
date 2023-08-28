@@ -14,11 +14,14 @@ _________TODO__________
 - Belege einfügen
     -> Recherche
 
-    -> 3.2 Verbindungsaufbau schritte belegen?
-    -> 3.3 Energie verbrauch rechnung
+    -> Verbindungsaufbau schritte belegen?
+    -> Bonding infos speichern
 - Evaluierung bei den einzelnen Kapiteln (tests)
 
 - Kapitel 6 und 7 zusammenbringen
+
+
+- Freigabe durch das Unternehmen
 
 
 ZOTERO
