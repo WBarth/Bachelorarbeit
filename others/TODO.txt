@@ -21,7 +21,8 @@ _________TODO__________
 - Kapitel 6 und 7 zusammenbringen
 
 
-- Freigabe durch das Unternehmen
+- Freigabe durch das Unternehmen?
+- funktionsstand der dongle app
 
 
 ZOTERO
