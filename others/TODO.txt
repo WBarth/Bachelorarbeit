@@ -60,3 +60,8 @@ Logging vom reset?! neue Idee
 
 also die Statuspakete der einzelnen Verbindung gehäuft um einen Zeitpunkt auftreten. Besser wäre es die Pakete auf die gesamte Zeispanne des Connection Intervals gleichmäßig zu verteilen. Dadurch kann es dazu kommen, dass das Softdevice die Anwendung des Fußschalters für eine bemerkbare Zeit blockiert, da es eine höhere Priorität besitzt. Die Optimierung der Connection Intervalle ist jedoch Aufgabe des unterliegenden Frameworks nrf\_Base.
 %TODO Bild
+
+
+Hallo Wolfram, sorry, war bis jetzt in der Besprechung. Also der Stand der Technik, von dem wir ausgehen sind die Kabelgebundenen Adapter,
+ also Brecht Euromux oder der Adapter von IBR Comgage oder Mitotoyu Digimatic-Schnittelle. Bei den BLE-Adaptern kenne ich den Bobe-Dongle,
+  den V-MUX, Elias Bluedat.
