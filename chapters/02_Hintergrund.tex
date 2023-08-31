@@ -21,7 +21,7 @@ Die Werkzeuge stellen dem Anwender die Daten der Messungen in verschiedener Weis
 
 \begin{figure}[H] 
 	\centering
-	\includegraphics[width=\textwidth]{figures/Ökosystem.png}
+	\includegraphics[width=\textwidth]{figures/HCT-Plattform.png}
 	\caption{Schematische Zeichnung der \ac{HCT}-Plattform}
 \end{figure}
 
@@ -34,3 +34,9 @@ Der \ac{HCT}-Plattform liegt das firmeneigene \ac{HCT}-Protokoll zugrunde. Diese
 	\caption{Auszug aus dem virtuellen Speichermodell für Messuhren und Messschieber}
 	\label{fig:virtuellesSpeichermodell}
 \end{figure}
+
+
+\subsection{Stand der Technik}
+Für die Anbindung von Messmitteln an einem Computer ist eine vielzahl von alternativen Lösungsansätzen vorhanden, welche jedoch schwerwiegende Nachteile besitzen und durch den Fußschalter aufgelöst werden. Zum besseren Verständnis werden in diesem Kapitel zwei alternativen zum Fußschalter aufgezeigt.\\
+Ein Lösungsansatz ist der ``V-Mux'' der Firma Brecht. Dieser benötigt einerseits eine Software Installation und andererseits einen USB-Dongle, über welchen nicht nur \ac{HCT}-Werkzeuge angebunden werden können, sondern auch Geräte der Firmen Sylvac und Mitutoyo. Der V-Mux gibt die Messergebisse über einen virtuellen COM-Port in den Protokolle Euromux, MUX10, MUX50 und DMX16 aus, wodurch die Messergebisse durch eine \ac{CAQ}-Software verwertbar werden (\cite[5]{VMUX}). Der V-Mux unterstützt keine Serialisierung der Messergebnisse über \ac{HID}.\\
+Die ``T-Box'' der Firma Bobe serialisiert die Messergebnisse von bis zu 12 über Kabel verbundenen Messmitteln in \ac{HID}-Ausgaben, wofür keine weitere Software benötigt wird und eine Kombination mit einem Fußtaster der Firma Bobe ist möglich (\cite{TBOX-Bobe}). Für die Umwandlung in ein durch eine \ac{CAQ}-Software verwertbares Format, wird einerseits anderes Gerät, die ``M-Box'', benötigt und andererseits ist die Installation einer Treibersoftware erforderlich. Auch an die M-Box müssen die Messmittel über Kabel angeschlossen werden (\cite{MBOX-Bobe}).
